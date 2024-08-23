@@ -136,7 +136,7 @@ conn.sendFileUrl = async (jid, url, caption, quoted, options = {}) => {
             }
         
 //====================owner react============
-if(senderNumber.includes("94775713391)){
+if(senderNumber.includes("94775713391")){
 if(!isReact) return
 m.react("😈")
 }          
