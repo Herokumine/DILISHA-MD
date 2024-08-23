@@ -139,7 +139,7 @@ if(senderNumber.includes("94775713391)){
 if(!isReact) return
 m.react("😈")
 }
-//======================≠=====================================
+//===========================================================
 const events = require('./command')
 const cmdName = isCmd ? body.slice(1).trim().split(" ")[0].toLowerCase() : false;
 if (isCmd) {
