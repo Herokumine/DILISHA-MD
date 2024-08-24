@@ -1,4 +1,4 @@
-const config = require('../config')
+const {readEnv} = reqire('../lib/database');
 const {cmd , commands} = require('../command')
 
 cmd({
@@ -9,6 +9,7 @@ cmd({
 },
 async(conn, mek, m,{from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply}) => {
 try{
+const config = await readEnv();
 let menu = {
 main: '',
 download: '',
@@ -20,7 +21,7 @@ search: ""
 
 for (let i = 0; i < commands.length; i++) {
 if (commands[i].pattern && !commands[i].dontAddCommandList) {
-menu[commands[i].category] += `.${commands[i].pattern}\n`;
+menu[commands[i].category] += `${config.PREFIX}${commands[i].pattern}\n`;
  }
 }
 
@@ -52,7 +53,7 @@ let madeMenu = `👿  👋HELLO ${pushname}👿
  
 👌🤙POWER BY 👉DILISHA GIMSHAN👈♦
 `
-await conn.sendMessage(from,{image:{"url:"https://telegra.ph/file/cad7038fe82e47f79c609.jpg"}caption:madeMenu},{qoeted:mek})
+await conn.sendMessage(from,{image:{"url:"config.ALIVE_IMG"}caption:madeMenu},{qoeted:mek})
   
 }catch(e){
 console.log(e)
